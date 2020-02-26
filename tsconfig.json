@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "allowJs": true,
+        "target": "es5",
+        "strict": true,
+        "esModuleInterop": true, 
+        "forceConsistentCasingInFileNames": true,
+        "typeRoots": [ "./node_modules/@types"] 
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./*.ts"
+    ],
+    "exclude": [
+        "./node_modules"
+    ]
+}

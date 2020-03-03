@@ -10,6 +10,7 @@ Javascript library for distance and similarity metrics. Javascript translation f
 * [Installation](#installation)
 * [Usage](#usage)
 * [Metrics](#metrics)
+  * [Levenshtein]((#levenshtein))
 
 # Installation <a name="installation"></a>
 
@@ -63,7 +64,7 @@ In general a method of a metric receives three parameters:
 |maxDistance| Returns the maximum value of the distance between source and target given a specific cost for edit operations. The default method just return 1 given source and target don't have both length=0, in that case just return 0. |
 
 
-## Levenshtein metric
+## Levenshtein metric  <a name="levenshtein"></a>
 Levenshtein distance is usually known as "the" edit distance. It is defined as the minimum number of edit operations (deletion, insertion and substitution) to transform the source string into the target string. The algorithm for distance computation is implemented using the dynamic programming approach with the full matrix construction, althought there are optimizations for time and space complexity those are not implemented here.
 
 ## Contributors

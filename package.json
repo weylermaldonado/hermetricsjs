@@ -1,9 +1,15 @@
 {
   "name": "hermetrics",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Javascript version of hermetrics.py",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "keywords": [
+    "hermetrics",
+    "nlp",
+    "similarity metric",
+    "distance metric"
+  ],
   "scripts": {
     "test": "npx mocha -r ts-node/register tests/**/**/*.test.ts",
     "dev": "npx tsc --watch",

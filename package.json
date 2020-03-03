@@ -18,7 +18,7 @@
     "prepublish": "npx tsc"
   },
   "author": " <wmaldonado@soldai.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.2.10",
     "@types/mocha": "^7.0.1",

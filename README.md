@@ -4,6 +4,7 @@
 Javascript library for distance and similarity metrics. Javascript translation from [hermetrics.py](https://github.com/kampamocha/hermetrics).
 
 ![Build Status](https://travis-ci.com/weylermaldonado/hermetricsjs.svg?branch=master)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 # Content
 

@@ -1,7 +1,7 @@
 import Metric from './metric'
 
 class Levenshtein extends Metric {
-  constructor (name: string = 'Lenveshtein') {
+  constructor (name: string = 'Levenshtein') {
     super(name)
   }
 
@@ -14,7 +14,7 @@ class Levenshtein extends Metric {
     const rows: number = sourceLength + 1
     const cols: number = targetLength + 1
 
-    const distanceMatrix: any[] = Array<any>(cols).fill(null).map(() => Array<any>(rows).fill(null))
+    const distanceMatrix: number[][] = Array<number>(cols).fill(0).map(() => Array<number>(rows).fill(0))
 
     for (let i = 0; i <= sourceLength; i++) {
       distanceMatrix[0][i] = i * deleteCost
@@ -38,7 +38,20 @@ class Levenshtein extends Metric {
 
     return distanceMatrix[targetLength][sourceLength]
   }
+
+  public maxDistance (source: string, target: string, cost: number = 1): number {
+    const sourceLength: number = source.length
+    const targetLength: number = target.length
+    const delCost: number = cost
+    const insCost: number = cost
+    const subCost: number = cost
+
+    const maxDel: number = Math.max(sourceLength - targetLength, 0)
+    const maxIns: number = Math.max(targetLength - sourceLength, 0)
+    const maxSub: number = Math.min(sourceLength, targetLength)
+
+    return maxDel * delCost + maxIns * insCost + maxSub * subCost
+  }
 }
-const l = new Levenshtein()
-console.log(l.distance('start', 'end'))
+
 export default Levenshtein

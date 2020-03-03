@@ -4,16 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc --watch",
+    "test": "npx mocha -r ts-node/register tests/**/**/*.test.ts",
+    "dev": "npx tsc --watch",
     "start": "nodemon dist/levenshtein.js",
-    "lint": "eslint \"**/*.ts\""
+    "lint": "eslint \"src/**/*.ts\" --fix"
   },
   "author": " <wmaldonado@soldai.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/chai": "^4.2.10",
+    "@types/mocha": "^7.0.1",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
+    "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
@@ -23,6 +26,9 @@
     "eslint-plugin-json": "^2.0.1",
     "eslint-plugin-node": "^9.2.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^7.1.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
   }
 }

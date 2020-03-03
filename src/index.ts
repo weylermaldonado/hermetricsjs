@@ -1,5 +1,5 @@
-import Levenshtein from './hermetircs/levenshtein'
-import Metric from './hermetircs/metric'
+import Levenshtein from './hermetrics/levenshtein'
+import Metric from './hermetrics/metric'
 
 export {
   Levenshtein,

@@ -5,10 +5,10 @@ Javascript library for distance and similarity metrics. Javascript translation f
 
 ![Build Status](https://travis-ci.com/weylermaldonado/hermetricsjs.svg?branch=master)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/03f72b3394744c8bb5a874d4b1156350)](https://app.codacy.com/manual/weylermaldonado/hermetricsjs?utm_source=github.com&utm_medium=referral&utm_content=weylermaldonado/hermetricsjs&utm_campaign=Badge_Grade_Dashboard)
+
 
 # Content
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/03f72b3394744c8bb5a874d4b1156350)](https://app.codacy.com/manual/weylermaldonado/hermetricsjs?utm_source=github.com&utm_medium=referral&utm_content=weylermaldonado/hermetricsjs&utm_campaign=Badge_Grade_Dashboard)
 
 * [Installation](#installation)
 * [Usage](#usage)

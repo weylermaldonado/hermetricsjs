@@ -10,7 +10,7 @@ Javascript library for distance and similarity metrics. Javascript translation f
 * [Installation](#installation)
 * [Usage](#usage)
 * [Metrics](#metrics)
-  * [Levenshtein]((#levenshtein))
+  * [Levenshtein](#levenshtein)
 
 # Installation <a name="installation"></a>
 

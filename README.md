@@ -2,4 +2,6 @@
 
 
 ## Contributors
- [Juan Negron](https://github.com/juan-negron)
+
+-  [Juan Negron](https://github.com/juan-negron)
+-  [Diego Campos](https://github.com/kampamocha)

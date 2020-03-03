@@ -14,7 +14,7 @@ class Metric {
     return source === target ? 0 : 1
   }
 
-  public maxDistance (source: string, target: string, cost: number = 1): number {
+  public maxDistance (source: string, target: string, { deleteCost, insertCost, substitutionCost }: LevenshteinCostOptions = {}): number {
     return (source.length === 0 && target.length === 0) ? 0 : 1
   }
 }

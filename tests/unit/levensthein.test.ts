@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import { expect } from 'chai'
-import Levenshtein from '../../src/hermetircs/levenshtein'
+import Levenshtein from '../../src/hermetrics/levenshtein'
 
 describe('Levenshtein metric', function() {
 

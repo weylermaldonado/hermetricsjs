@@ -1,5 +1,5 @@
 import Metric from './metric'
-import LevenshteinCostOptions from '../interfaces/levenstein-opts.interface'
+import LevenshteinCostOptions from '../interfaces/levenshtein-opts.interface'
 
 class Levenshtein extends Metric {
   constructor (name: string = 'Levenshtein') {

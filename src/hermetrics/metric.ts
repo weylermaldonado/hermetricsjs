@@ -1,4 +1,4 @@
-import LevenshteinCostOptions from '../interfaces/levenstein-opts.interface'
+import LevenshteinCostOptions from '../interfaces/levenshtein-opts.interface'
 
 class Metric {
   private readonly _name: string;

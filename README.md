@@ -20,7 +20,7 @@ Javascript library for distance and similarity metrics. Javascript translation f
 From npm
 
 ```bash
-$ npm i hermetricsjs --save
+$ npm i hermetrics --save
 ```
 
 
@@ -28,7 +28,7 @@ $ npm i hermetricsjs --save
 
 Require the package and import the desired class:
 ```javascript
-const { Levenshtein } = require('hermetricsjs');
+const { Levenshtein } = require('hermetrics');
 
 const levenshtein = new Levenshtein();
 

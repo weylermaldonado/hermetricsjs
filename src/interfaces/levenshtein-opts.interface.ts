@@ -1,5 +1,5 @@
 export default interface LevenshteinCostOptions {
-  deleteCost?: number
-  insertCost?: number
+  deletionCost?: number
+  insertionCost?: number
   substitutionCost?: number
 }

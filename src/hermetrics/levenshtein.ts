@@ -6,11 +6,11 @@ class Levenshtein extends Metric {
     super(name)
   }
 
-  public distance (source: string, target: string, { deleteCost, insertCost, substitutionCost }: LevenshteinCostOptions = {}): number {
+  public distance (source: string, target: string, { deletionCost, insertionCost, substitutionCost }: LevenshteinCostOptions = {}): number {
     const sourceLength: number = source.length
     const targetLength: number = target.length
-    const removeCost: number = deleteCost ?? 1
-    const insertionCost: number = insertCost ?? 1
+    const removeCost: number = deletionCost ?? 1
+    const insertCost: number = insertionCost ?? 1
     const subtractCost: number = substitutionCost ?? 1
     const rows: number = sourceLength + 1
     const cols: number = targetLength + 1
@@ -22,7 +22,7 @@ class Levenshtein extends Metric {
     }
 
     for (let j = 0; j <= targetLength; j++) {
-      distanceMatrix[j][0] = j * insertionCost
+      distanceMatrix[j][0] = j * insertCost
     }
 
     for (let j = 1; j <= targetLength; j++) {
@@ -31,7 +31,7 @@ class Levenshtein extends Metric {
         if (source[i - 1] !== target[j - 1]) { indicator += subtractCost }
         distanceMatrix[j][i] = Math.min(
           distanceMatrix[j][i - 1] + removeCost,
-          distanceMatrix[j - 1][i] + insertionCost,
+          distanceMatrix[j - 1][i] + insertCost,
           distanceMatrix[j - 1][i - 1] + indicator
         )
       }
@@ -40,11 +40,11 @@ class Levenshtein extends Metric {
     return distanceMatrix[targetLength][sourceLength]
   }
 
-  public maxDistance (source: string, target: string, { deleteCost, insertCost, substitutionCost }: LevenshteinCostOptions = {}): number {
+  public maxDistance (source: string, target: string, { deletionCost, insertionCost, substitutionCost }: LevenshteinCostOptions = {}): number {
     const sourceLength: number = source.length
     const targetLength: number = target.length
-    const delCost: number = deleteCost ?? 1
-    const insCost: number = insertCost ?? 1
+    const delCost: number = deletionCost ?? 1
+    const insCost: number = insertionCost ?? 1
     const subCost: number = substitutionCost ?? 1
 
     const maxDel: number = Math.max(sourceLength - targetLength, 0)

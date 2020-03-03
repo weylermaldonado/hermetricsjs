@@ -1,3 +1,5 @@
+import LevenshteinCostOptions from '../interfaces/levenstein-opts.interface'
+
 class Metric {
   private readonly _name: string;
 
@@ -8,7 +10,7 @@ class Metric {
   /**
      * distance
      */
-  public distance (source: string, target: string, cost: number = 1): number {
+  public distance (source: string, target: string, { deleteCost, insertCost, substitutionCost }: LevenshteinCostOptions = {}): number {
     return source === target ? 0 : 1
   }
 

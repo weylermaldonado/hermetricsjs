@@ -4,6 +4,7 @@
         "module": "commonjs",
         "allowJs": true,
         "target": "es6",
+        "declaration": true,
         "strict": true,
         "esModuleInterop": true, 
         "forceConsistentCasingInFileNames": true,

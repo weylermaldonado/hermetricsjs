@@ -62,7 +62,7 @@ describe('Levenshtein metric', function() {
          it('should return 5 with different length words', function() {
             // Arrange
             const levenshtein = new Levenshtein();
-
+          
             // Act
             const differentLengthWordsResult = levenshtein.distance('start', 'end');
 

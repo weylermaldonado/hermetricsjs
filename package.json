@@ -1,13 +1,15 @@
 {
   "name": "hermetricsjs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.3",
+  "description": "Javascript version of hermetrics.py",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "npx mocha -r ts-node/register tests/**/**/*.test.ts",
     "dev": "npx tsc --watch",
     "start": "nodemon dist/levenshtein.js",
-    "lint": "eslint \"src/**/*.ts\" --fix"
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "prepublish": "npx tsc"
   },
   "author": " <wmaldonado@soldai.com>",
   "license": "ISC",

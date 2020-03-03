@@ -64,7 +64,7 @@ In general a method of a metric receives three parameters:
 
 
 ## Levenshtein metric
-
+Levenshtein distance is usually known as "the" edit distance. It is defined as the minimum number of edit operations (deletion, insertion and substitution) to transform the source string into the target string. The algorithm for distance computation is implemented using the dynamic programming approach with the full matrix construction, althought there are optimizations for time and space complexity those are not implemented here.
 
 ## Contributors
 

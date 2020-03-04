@@ -35,6 +35,24 @@ const levenshtein = new Levenshtein();
 levenshtein.distance('start', 'end');
 levenshtein.maxDistance('start', 'end');
 ```
+
+Using [custom](#custom) operation costs:
+
+```javascript
+const { Levenshtein } = require('hermetrics');
+
+const levenshtein = new Levenshtein();
+
+const opts = {
+  deletionCost: 3,
+  substitutionCost: 2,
+  deletionCost: 5
+};
+
+levenshtein.distance('start', 'end', opts);
+levenshtein.maxDistance('start', 'end', opts);
+```
+
 # Metrics <a name="metrics"></a>
 
 ## Overview
@@ -43,7 +61,7 @@ Hermetrics is a library designed for use in experimentation with string metrics.
 
 Based on Metric are some common string metrics already implemented to compute the distance between two strings. Some common edit distance metrics such as Levenshtein can be parametrized with different costs for each edit operation, althought have been only thoroughly tested with costs equal to 1. Also, the implemented metrics can be used to compare any iterable in addition to strings, but more tests are needed.
 
-A metric has three main methods distance, normalized_distance and similarity. In general the distance method computes the absolute distance between two strings, whereas normalized_distance can be used to scale the distance to a particular range, usually (0,1), and the similarity method being normally defined as (1-normalized_distance).
+A metric has three main methods distance, normalizeDistance and similarity. In general the distance method computes the absolute distance between two strings, whereas normalizeDistance can be used to scale the distance to a particular range, usually (0,1), and the similarity method being normally defined as (1-normalizeDistance).
 
 The normalization of the distance can be customized overriding the auxiliary methods for its computation. Those methods are maxDistance, minDistance and normalize.
 
@@ -51,7 +69,7 @@ The normalization of the distance can be customized overriding the auxiliary met
 
 Metric is a base class that can receive as arguments six specific functions to be used as methods for the metric being implemented. The class constructor just assign the functions received as parameters to the class methods. If you omit some parameter then a default method is used, which allows you to implement metrics without the need to rewrite some of the functionality that is common among metrics.
 
-## Default methods
+## Default methods <a name="custom"></a>
 
 Description of default methods for the Metric class.
 

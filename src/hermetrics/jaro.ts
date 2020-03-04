@@ -1,4 +1,5 @@
 import Metric from './metric'
+import JaroCostOptions from './../interfaces/jaro-opts.interface'
 
 class Jaro extends Metric 
 {
@@ -12,7 +13,7 @@ class Jaro extends Metric
    * @param target 
    * @param cost 
    */
-  public similarity(source: string, target: string, cost: number = 1) : number 
+  public similarity(source: string, target: string, { deletionCost, insertionCost, substitutionCost }: JaroCostOptions = {}) : number 
   {
     const sourceLength: number = source.length;
     const targetLength: number = target.length;
@@ -68,9 +69,9 @@ class Jaro extends Metric
    * @param target 
    * @param cost 
    */
-  public distance(source: string, target: string, cost: number = 1) : number 
+  public distance (source: string, target: string, { deletionCost, insertionCost, substitutionCost }:JaroCostOptions = {} ): number 
   {
-      return 1 - this.similarity(source, target, cost);
+      return 1 - this.similarity(source, target, {deletionCost, insertionCost, substitutionCost});
   }
 
   

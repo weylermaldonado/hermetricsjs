@@ -7,6 +7,7 @@ class Levenshtein extends Metric {
   }
 
   public distance (source: string, target: string, { deletionCost, insertionCost, substitutionCost }: LevenshteinCostOptions = {}): number {
+    
     const sourceLength: number = source.length
     const targetLength: number = target.length
     const removeCost: number = deletionCost ?? 1

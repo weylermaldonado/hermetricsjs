@@ -1,4 +1,5 @@
 import Jaro from './jaro'
+import JaroCostOptions from './../interfaces/jaro-opts.interface'
 
 class JaroWinkler extends Jaro
 {
@@ -13,23 +14,26 @@ class JaroWinkler extends Jaro
      * @param cost 
      * @param p 
      */
-    public similarity(source: string, target: string, cost: number = 1, p: number = 0.1): number
+    public similarity(source: string, target: string, {insertionCost, deletionCost, substitutionCost, lambdaCost, roCost}: JaroCostOptions = {}): number
     {
+        const p: number = roCost ?? 0.1;
+        
         if (!( 0 <= p  && p <= 0.25 ))
         {
             new Error("The p parameter must be between 0 and 0.25");
         }
 
-        const maxL: number = 4;
-        let l: number = 0;
 
-        for( let i = 0; i < 4; i++)
+        let l: number = 0;
+        const maxL : number = lambdaCost ?? 4;
+
+        for( let i = 0; i < maxL; i++)
         {
             if(source[i] != target[i]) break;
             l++;
         }
 
-        const j: number = super.similarity(source, target, cost);
+        const j: number = super.similarity(source, target, {insertionCost, deletionCost, substitutionCost});
         return j + l*p*(1 - j);
 
     }
@@ -41,9 +45,9 @@ class JaroWinkler extends Jaro
      * @param cost 
      * @param p 
      */
-    public distance(source: string, target: string, cost: number = 1, p: number = 0.1): number
+    public distance(source: string, target: string, {insertionCost, deletionCost, substitutionCost, lambdaCost, roCost}: JaroCostOptions = {}): number
     {
-        return 1 - this.similarity(source, target, cost, p)
+        return 1 - this.similarity(source, target, {insertionCost, deletionCost, substitutionCost, lambdaCost, roCost})
     }
 }
 export default JaroWinkler;

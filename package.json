@@ -1,6 +1,6 @@
 {
   "name": "hermetrics",
-  "version": "0.0.0-development",
+  "version": "1.0.10",
   "description": "Javascript version of hermetrics.py",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -44,5 +44,5 @@
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3",
     "semantic-release": "^17.0.4"
-  }
+  } 
 }

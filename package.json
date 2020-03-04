@@ -40,9 +40,16 @@
     "eslint-plugin-node": "^9.2.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.3",
     "mocha": "^7.1.0",
+    "semantic-release": "^17.0.4",
     "ts-node": "^8.6.2",
-    "typescript": "^3.8.3",
-    "semantic-release": "^17.0.4"
-  } 
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test"
+    }
+  }
 }

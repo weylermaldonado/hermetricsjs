@@ -4,6 +4,7 @@
   "description": "Javascript version of hermetrics.py",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": "https://github.com/weylermaldonado/hermetricsjs",
   "keywords": [
     "hermetrics",
     "nlp",

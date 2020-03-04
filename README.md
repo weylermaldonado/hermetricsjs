@@ -14,6 +14,14 @@ Javascript library for distance and similarity metrics. Javascript translation f
 * [Usage](#usage)
 * [Metrics](#metrics)
   * [Levenshtein](#levenshtein)
+  * Hamming (work in progress)
+  * OSA (work in progress)
+  * Damerau-Levenshtein (work in progress)
+  * Jaccard (work in progress)
+  * Dice (work in progress)
+  * Jaro (work in progress)
+  * Jaro-Winkler (work in progress)
+  * Metric comparator (work in progress)
 
 # Installation <a name="installation"></a>
 
@@ -67,7 +75,7 @@ The normalization of the distance can be customized overriding the auxiliary met
 
 ## *Metric* class
 
-Metric is a base class that can receive as arguments six specific functions to be used as methods for the metric being implemented. The class constructor just assign the functions received as parameters to the class methods. If you omit some parameter then a default method is used, which allows you to implement metrics without the need to rewrite some of the functionality that is common among metrics.
+Metric is a base class that can receive as arguments an metric name, and contains six specific functions to be used as methods for the metric being implemented. 
 
 ## Default methods <a name="custom"></a>
 
@@ -83,6 +91,10 @@ In general a method of a metric receives three parameters:
 |--------|-------------|
 |Distance| The distance method computes the total cost of transforming the source string on the target string. The default method just return 0 if the strings are equal and 1 otherwise.|
 |maxDistance| Returns the maximum value of the distance between source and target given a specific cost for edit operations. The default method just return 1 given source and target don't have both length=0, in that case just return 0. |
+|minDistance| *work in progress* |
+|normalize|*work in progress*|
+|normalized distance|*work in progress*|
+|similarity|*work in progress*|
 
 
 ## Levenshtein metric  <a name="levenshtein"></a>

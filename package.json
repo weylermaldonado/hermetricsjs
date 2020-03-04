@@ -1,10 +1,13 @@
 {
   "name": "hermetrics",
-  "version": "1.0.8",
+  "version": "0.0.0-development",
   "description": "Javascript version of hermetrics.py",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/weylermaldonado/hermetricsjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weylermaldonado/hermetricsjs"
+  },
   "keywords": [
     "hermetrics",
     "nlp",
@@ -16,7 +19,8 @@
     "dev": "npx tsc --watch",
     "start": "nodemon dist/levenshtein.js",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "prepublish": "npx tsc"
+    "prepublish": "npx tsc",
+    "semantic-release": "semantic-release"
   },
   "author": " <wmaldonado@soldai.com>",
   "license": "MIT",
@@ -38,6 +42,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "mocha": "^7.1.0",
     "ts-node": "^8.6.2",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "semantic-release": "^17.0.4"
   }
 }

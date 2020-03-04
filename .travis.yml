@@ -4,6 +4,8 @@ node_js:
   - 'node'
   - '10'
   - '8'
+  - '12'
+  - '13'
 
 install:
   - npm install

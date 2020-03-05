@@ -1,6 +1,6 @@
 {
   "name": "hermetrics",
-  "version": "0.0.0-development",
+  "version": "1.0.10",
   "description": "Javascript version of hermetrics.py",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -49,7 +49,6 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test",
       "pre-push": "npm test"
     }
   }

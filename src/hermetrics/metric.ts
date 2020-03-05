@@ -56,6 +56,10 @@ class Metric {
     const max: number = this.maxDistance(source, target, {deletionCost, insertionCost, substitutionCost})
     return this.normalize(x, min, max)
   }
+  public similarity(source : string, target : string, {deletionCost, insertionCost, substitutionCost} : LevenshteinCostOptions = {}) : number
+  {
+    return 1 - this.normalizedDistance(source, target, {deletionCost, insertionCost, substitutionCost})
+  }
 }
 
 export default Metric

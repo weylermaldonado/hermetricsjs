@@ -54,8 +54,8 @@ const levenshtein = new Levenshtein();
 
 const opts = {
   deletionCost: 3,
-  substitutionCost: 2,
-  deletionCost: 5
+  insertionCost: 5,
+  substitutionCost: 2
 };
 
 levenshtein.distance('start', 'end', opts);
@@ -70,13 +70,13 @@ Hermetrics is a library designed for use in experimentation with string metrics.
 
 Based on Metric are some common string metrics already implemented to compute the distance between two strings. Some common edit distance metrics such as Levenshtein can be parametrized with different costs for each edit operation, althought have been only thoroughly tested with costs equal to 1. Also, the implemented metrics can be used to compare any iterable in addition to strings, but more tests are needed.
 
-A metric has three main methods distance, normalizeDistance and similarity. In general the distance method computes the absolute distance between two strings, whereas normalizeDistance can be used to scale the distance to a particular range, usually (0,1), and the similarity method being normally defined as (1-normalizeDistance).
+A metric has three main methods: distance, normalizeDistance and similarity. In general the distance method computes the absolute distance between two strings, whereas normalizeDistance can be used to scale the distance to a particular range, usually (0,1), and the similarity method being normally defined as (1-normalizeDistance).
 
 The normalization of the distance can be customized overriding the auxiliary methods for its computation. Those methods are maxDistance, minDistance and normalize.
 
 ## *Metric* class
 
-Metric is a base class that can receive as arguments an metric name, and contains six specific functions to be used as methods for the metric being implemented. 
+Metric is a base class that contains six specific functions to be used as methods for the metric being implemented. 
 
 ## Default methods <a name="custom"></a>
 
@@ -96,7 +96,6 @@ In general a method of a metric receives three parameters:
 | normalize | This method is used to scale a value between two limits, usually those obtained by maxDistance and minDistance, to the (0,1) range. Unlike the other methods, normalize doesn't receive the usual arguments (source, target and cost), instead receive the following: x. The value to be normalized. low=0. The minimum value for the normalization, usually obtained with minDistance method. high=1. The maximum value for the normalization, usually obtained with maxDistance method. |
 | normalize distance | Scale the distance between source and target for specific cost to the (0,1) range using maxDistance, minDistance and normalize. | 
 | similarity | Computes how similar are source and target given a specific cost. By default defined as 1 - normalizedDistance so the result is also in the (0,1) range. |
-
 
 ## Levenshtein metric  <a name="levenshtein"></a>
 Levenshtein distance is usually known as "the" edit distance. It is defined as the minimum number of edit operations (deletion, insertion and substitution) to transform the source string into the target string. The algorithm for distance computation is implemented using the dynamic programming approach with the full matrix construction, althought there are optimizations for time and space complexity those are not implemented here.

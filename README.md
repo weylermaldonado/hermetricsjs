@@ -54,8 +54,8 @@ const levenshtein = new Levenshtein();
 
 const opts = {
   deletionCost: 3,
-  substitutionCost: 2,
-  deletionCost: 5
+  insertionCost: 5,
+  substitutionCost: 2
 };
 
 levenshtein.distance('start', 'end', opts);
@@ -70,13 +70,13 @@ Hermetrics is a library designed for use in experimentation with string metrics.
 
 Based on Metric are some common string metrics already implemented to compute the distance between two strings. Some common edit distance metrics such as Levenshtein can be parametrized with different costs for each edit operation, althought have been only thoroughly tested with costs equal to 1. Also, the implemented metrics can be used to compare any iterable in addition to strings, but more tests are needed.
 
-A metric has three main methods distance, normalizeDistance and similarity. In general the distance method computes the absolute distance between two strings, whereas normalizeDistance can be used to scale the distance to a particular range, usually (0,1), and the similarity method being normally defined as (1-normalizeDistance).
+A metric has three main methods: distance, normalizeDistance and similarity. In general the distance method computes the absolute distance between two strings, whereas normalizeDistance can be used to scale the distance to a particular range, usually (0,1), and the similarity method being normally defined as (1-normalizeDistance).
 
 The normalization of the distance can be customized overriding the auxiliary methods for its computation. Those methods are maxDistance, minDistance and normalize.
 
 ## *Metric* class
 
-Metric is a base class that can receive as arguments an metric name, and contains six specific functions to be used as methods for the metric being implemented. 
+Metric is a base class that contains six specific functions to be used as methods for the metric being implemented. 
 
 ## Default methods <a name="custom"></a>
 
@@ -92,10 +92,10 @@ In general a method of a metric receives three parameters:
 |--------|-------------|
 |Distance| The distance method computes the total cost of transforming the source string on the target string. The default method just return 0 if the strings are equal and 1 otherwise.|
 |maxDistance| Returns the maximum value of the distance between source and target given a specific cost for edit operations. The default method just return 1 given source and target don't have both length=0, in that case just return 0. |
-|minDistance| *work in progress* |
-|normalize|*work in progress*|
-|normalized distance|*work in progress*|
-|similarity|*work in progress*|
+|minDistance| Return 0 |
+|normalize|This method is used to scale a value between two limits, usually those obtained by max_distance and min_distance, to the (0,1) range.|
+|normalized distance|Scale the distance between source and target for specific cost to the (0,1) range using max_distance, min_distance and normalize.|
+|similarity|Computes how similar are source and target given a specific cost. By default defined as 1 - normalized_distance so the result is also in the (0,1) range.|
 
 
 ## Levenshtein metric  <a name="levenshtein"></a>

@@ -30,7 +30,7 @@ describe('Metric comparator', function() {
         })
 
         it('should return 0.72 with JaroWinkler metric', function() {
-                // Arrange
+                // Arrangejua
                 const metricComparator = new MetricComparator()
     
                 // Act

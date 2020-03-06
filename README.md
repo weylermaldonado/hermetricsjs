@@ -17,12 +17,12 @@ Javascript library for distance and similarity metrics. Javascript translation f
   * [Levenshtein](#levenshtein)
   * [Jaro](#jaro)
   * [Jaro-Winkler](#jaro-winkler)
+  * [Jaccard](#jaccard)
+  * [Metric comparator](#mc)
   * Hamming (work in progress)
   * OSA (work in progress)
   * Damerau-Levenshtein (work in progress)
-  * Jaccard (work in progress)
   * Dice (work in progress)
-  * Metric comparator (work in progress)
 
 # Installation <a name="installation"></a>
 
@@ -105,6 +105,15 @@ Jaro distance is based on the matching characters present on two strings and the
 
 ## Jaro-Winkler <a name="jaro-winkler"></a>
 Extension of Jaro distance with emphasis on the first characters of the strings, so strings that have matching characters on the beginning have more similarity than those that have matching characters at the end. This metric depends on an additional parameter p (with 0<=p<=0.25 and default p=0.1) that is a weighting factor for additional score obtained for matching characters at the beginning of the strings..
+
+## Jaccard <a name="jaccard"></a>
+The Jaccard index considers the strings as a bag-of-characters set and computes the cardinality of the intersection over the cardinality of the union. The distance function for Jaccard index is already normalized.
+
+
+## Metric comparador <a name="mc"></a>
+This is a class useful to compare the result of various metrics when applied on the same strings. For example, to see the difference between OSA and Damerau-Levenshtein you can pass those two metrics on a list to a MetricComparator instance and compute the similarity between the same two strings.
+
+By default the MetricComparator class use the 8 metrics implemented on the library, so you can compare all of them on the same two strings. Currently the similarity is the only measure implemented on the class.
 
 ## Contributors
 

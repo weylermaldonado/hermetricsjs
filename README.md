@@ -80,7 +80,7 @@ Metric is a base class that contains six specific functions to be used as method
 
 If you want customize any function, for now, there are two available ways:
 
-You could modify the `prototype` class
+You could modify the class `prototype` 
 
 ``` javascript
 const { Levenshtein } = require('hermetrics');
@@ -114,14 +114,14 @@ class MyAwesomeMetric extends Metric {
     super(name);
   }
 
-  distance(source, target, opts) {
+  distance() {
     console.log('bar');
   }
 }
 
 const myAwesomeMetric = new MyAwesomeMetric();
 
-myAwesomeMetric.distance('start', 'end'); //bar
+myAwesomeMetric.distance(); //bar
 
 
 ```

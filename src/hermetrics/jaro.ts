@@ -43,7 +43,7 @@ class Jaro extends Metric {
         }
       }
     }
-    if (matches == 0) return 0
+    if (matches === 0) return 0
 
     let k: number = 0
 

@@ -78,6 +78,54 @@ The normalization of the distance can be customized overriding the auxiliary met
 
 Metric is a base class that contains six specific functions to be used as methods for the metric being implemented. 
 
+If you want customize any function, for now, there are two available ways:
+
+You could modify the `prototype` class
+
+``` javascript
+const { Levenshtein } = require('hermetrics');
+
+function foo() {
+  console.log('foo');
+}
+
+Levenshtein.prototype.distance = foo;
+
+// or
+
+Levenshtein.prototype.distance = function() {
+  console.log('foo');
+}
+
+
+const levenshtein = new Levenshtein();
+
+levenshtein.distance() // foo
+```
+
+You could extend the `Metric` base class
+
+```javascript
+const { Metric } = require('hermetrics');
+
+class MyAwesomeMetric extends Metric {
+
+  constructor(name = 'MyAwesomeMetric') {
+    super(name);
+  }
+
+  distance(source, target, opts) {
+    console.log('bar');
+  }
+}
+
+const myAwesomeMetric = new MyAwesomeMetric();
+
+myAwesomeMetric.distance('start', 'end'); //bar
+
+
+```
+
 ## Default methods <a name="custom"></a>
 
 Description of default methods for the Metric class.

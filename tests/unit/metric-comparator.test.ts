@@ -17,7 +17,7 @@ describe('Metric comparator', function() {
         expect(levenshteinResult[0].metric.similarityValue).equal(0.5)
        })
     
-       it('should return 0.72 with Jaro metric', function() {
+       it('should return ~ 0.72 with Jaro metric', function() {
             // Arrange
             const metricComparator = new MetricComparator()
 
@@ -26,19 +26,19 @@ describe('Metric comparator', function() {
             const levenshteinResult: Array<ComparatorSimilarity>  = result.filter(item => item.metric.name === 'Jaro')
 
             // Assert
-            expect(levenshteinResult[0].metric.similarityValue).equal(0.7222222222222222)
+            expect(levenshteinResult[0].metric.similarityValue).to.be.closeTo(0.722222, 1e-6)
         })
 
-        it('should return 0.72 with JaroWinkler metric', function() {
+        it('should return ~ 0.72 with JaroWinkler metric', function() {
                 // Arrangejua
                 const metricComparator = new MetricComparator()
-    
+     
                 // Act
                 const result = metricComparator.similarity('hardin', 'martinez')
                 const levenshteinResult: Array<ComparatorSimilarity>  = result.filter(item => item.metric.name === 'JaroWinkler')
     
                 // Assert
-                expect(levenshteinResult[0].metric.similarityValue).equal(0.7222222222222222)
+                expect(levenshteinResult[0].metric.similarityValue).to.be.closeTo(0.722222, 1e-6)
         })
     })
 })

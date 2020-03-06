@@ -17,14 +17,14 @@ class JaroWinkler extends Jaro {
     const p: number = roCost ?? 0.1
 
     if (!(p >= 0 && p <= 0.25)) {
-      new Error('The p parameter must be between 0 and 0.25')
+      throw new Error('The p parameter must be between 0 and 0.25')
     }
 
     let l: number = 0
     const maxL: number = lambdaCost ?? 4
 
     for (let i = 0; i < maxL; i++) {
-      if (source[i] != target[i]) break
+      if (source[i] !== target[i]) break
       l++
     }
 

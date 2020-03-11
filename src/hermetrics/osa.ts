@@ -43,7 +43,7 @@ class OSA extends Levenshtein {
 
         distanceMatrix[i][j] = Math.min(deletion, insertion, substitution)
 
-        if (i > 1 && j > 1 && source[i - 1] == target[j - 2] && source[i - 2] == target[j - 1]) {
+        if (i > 1 && j > 1 && source[i - 1] === target[j - 2] && source[i - 2] === target[j - 1]) {
           distanceMatrix[i][j] = Math.min(distanceMatrix[i][j], distanceMatrix[i - 2][j - 2] + transposCost)
         }
       }

@@ -22,7 +22,7 @@ Javascript library for distance and similarity metrics. Javascript translation f
   * [Hamming](#hamming)
   * [Damerau-Levenshtein](#dl)
   * [Dice](#dice)
-  * OSA (work in progress)
+  * [OSA](#osa)
 
 # Installation <a name="installation"></a>
 
@@ -173,6 +173,9 @@ The Damerau-Levenshtein distance is like OSA but without the restriction on the 
 Is related to Jaccard index in the following manner:
 
 ![](https://camo.githubusercontent.com/6f6c1b8e56a22ecf6b762a72e45b2801fcf3e959/68747470733a2f2f6c617465782e636f6465636f67732e636f6d2f7376672e6c617465783f5c4c617267652673706163653b443d5c667261637b324a7d7b312b4a7d)
+
+## OSA (Optimal String Alignment) <a name="osa"></a>
+The OSA distance is based on the Levenshtein distance but counting the transposition as a valid edit operation with the restriction that no substring can be transposed more than once.
 
 ## Contributors
 

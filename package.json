@@ -12,7 +12,15 @@
     "hermetrics",
     "nlp",
     "similarity metric",
-    "distance metric"
+    "distance metric",
+    "levenshtein",
+    "jaro",
+    "jaro-winkler",
+    "hamming",
+    "osa",
+    "damerau-levenshtein",
+    "jaccard",
+    "dice"
   ],
   "scripts": {
     "test": "npx mocha -r ts-node/register tests/**/**/*.test.ts",

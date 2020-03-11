@@ -40,5 +40,16 @@ describe('Metric comparator', function() {
                 // Assert
                 expect(levenshteinResult[0].metric.similarityValue).to.be.closeTo(0.722222, 1e-6)
         })
+        it('should return ~ 0.4 with Jaccard metric', function() {
+            // Arrangejua
+            const metricComparator = new MetricComparator()
+ 
+            // Act
+            const result = metricComparator.similarity('hardin', 'martinez')
+            const levenshteinResult: Array<ComparatorSimilarity>  = result.filter(item => item.metric.name === 'Jaccard')
+
+            // Assert
+            expect(levenshteinResult[0].metric.similarityValue).to.be.closeTo(0.4, 1e-6)
+        })
     })
 })

@@ -3,12 +3,14 @@ import Levenshtein from './levenshtein'
 import Jaro from './jaro'
 import JaroWinkler from './jaro_winkler'
 import ComparatorSimilarity from '../interfaces/comparator-opts.interface'
+import Jaccard from './jaccard'
 
 class MetricComparator {
   constructor (private readonly metrics: Metric[] = [
     new Levenshtein(),
     new Jaro(),
-    new JaroWinkler()
+    new JaroWinkler(),
+    new Jaccard()
   ]) {
     this.metrics = metrics
   }

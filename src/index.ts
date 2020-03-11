@@ -7,6 +7,8 @@ import Jaccard from './hermetrics/jaccard'
 import Hamming from './hermetrics/hamming'
 import DamerauLevenshtein from './hermetrics/damerau_levenshtein'
 import Dice from './hermetrics/dice'
+import OSA from './hermetrics/osa'
+
 export {
   Levenshtein,
   Metric,
@@ -16,5 +18,6 @@ export {
   Jaccard,
   Hamming,
   DamerauLevenshtein,
-  Dice
+  Dice,
+  OSA
 }

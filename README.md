@@ -19,10 +19,10 @@ Javascript library for distance and similarity metrics. Javascript translation f
   * [Jaro-Winkler](#jaro-winkler)
   * [Jaccard](#jaccard)
   * [Metric comparator](#mc)
-  * Hamming (work in progress)
+  * [Hamming](#hamming)
+  * [Damerau-Levenshtein](#dl)
+  * [Dice](#dice)
   * OSA (work in progress)
-  * Damerau-Levenshtein (work in progress)
-  * Dice (work in progress)
 
 # Installation <a name="installation"></a>
 
@@ -162,6 +162,17 @@ The Jaccard index considers the strings as a bag-of-characters set and computes 
 This is a class useful to compare the result of various metrics when applied on the same strings. For example, to see the difference between OSA and Damerau-Levenshtein you can pass those two metrics on a list to a MetricComparator instance and compute the similarity between the same two strings.
 
 By default the MetricComparator class use the 8 metrics implemented on the library, so you can compare all of them on the same two strings. Currently the similarity is the only measure implemented on the class.
+
+## Hamming <a name="hamming"></a>
+The Hamming distance count the positions where two strings differ. Normally the Hamming distance is only defined for strings of equal size but in this implementation strings of different size can be compared counting the difference in size as part of the distance.
+
+## Damerau-Levenshtein <a name="dl"></a>
+The Damerau-Levenshtein distance is like OSA but without the restriction on the number of transpositions for the same substring.
+
+## Dice (Sorenson-Dice) <a name="dice"></a>
+Is related to Jaccard index in the following manner:
+
+![](https://camo.githubusercontent.com/6f6c1b8e56a22ecf6b762a72e45b2801fcf3e959/68747470733a2f2f6c617465782e636f6465636f67732e636f6d2f7376672e6c617465783f5c4c617267652673706163653b443d5c667261637b324a7d7b312b4a7d)
 
 ## Contributors
 

@@ -4,12 +4,17 @@ import Jaro from './hermetrics/jaro'
 import JaroWinkler from './hermetrics/jaro_winkler'
 import MetricComparator from './hermetrics/metric-comparator'
 import Jaccard from './hermetrics/jaccard'
-
+import Hamming from './hermetrics/hamming'
+import DamerauLevenshtein from './hermetrics/damerau_levenshtein'
+import Dice from './hermetrics/dice'
 export {
   Levenshtein,
   Metric,
   Jaro,
   JaroWinkler,
   MetricComparator,
-  Jaccard
+  Jaccard,
+  Hamming,
+  DamerauLevenshtein,
+  Dice
 }

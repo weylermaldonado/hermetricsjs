@@ -51,5 +51,38 @@ describe('Metric comparator', function() {
             // Assert
             expect(levenshteinResult[0].metric.similarityValue).to.be.closeTo(0.4, 1e-6)
         })
+        it('should return ~ 0.571 with Dice metric', function() {
+            // Arrange
+            const metricComparator = new MetricComparator()
+
+            // Act
+            const result = metricComparator.similarity('hardin', 'martinez')
+            const levenshteinResult: Array<ComparatorSimilarity>  = result.filter(item => item.metric.name === 'Dice') 
+
+            // Assert
+            expect(levenshteinResult[0].metric.similarityValue).to.be.closeTo(0.571428, 1e-6)
+        })
+        it('should return ~ 0.5 with Damerau-Levenshtein metric', function() {
+            // Arrange
+            const metricComparator = new MetricComparator()
+
+            // Act
+            const result = metricComparator.similarity('hardin', 'martinez')
+            const levenshteinResult: Array<ComparatorSimilarity>  = result.filter(item => item.metric.name === 'Damerau-Levenshtein') 
+
+            // Assert
+            expect(levenshteinResult[0].metric.similarityValue).to.be.closeTo(0.5, 1e-6)
+        })
+        it('should return ~ 0.5 with Hamming metric', function() {
+            // Arrange
+            const metricComparator = new MetricComparator()
+
+            // Act
+            const result = metricComparator.similarity('hardin', 'martinez')
+            const levenshteinResult: Array<ComparatorSimilarity>  = result.filter(item => item.metric.name === 'Hamming') 
+
+            // Assert
+            expect(levenshteinResult[0].metric.similarityValue).to.be.closeTo(0.5, 1e-6)
+        })
     })
 })

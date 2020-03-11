@@ -4,13 +4,19 @@ import Jaro from './jaro'
 import JaroWinkler from './jaro_winkler'
 import ComparatorSimilarity from '../interfaces/comparator-opts.interface'
 import Jaccard from './jaccard'
+import Hamming from '../hermetrics/hamming'
+import Dice from '../hermetrics/dice'
+import DamerauLevenshtein from '../hermetrics/damerau_levenshtein'
 
 class MetricComparator {
   constructor (private readonly metrics: Metric[] = [
     new Levenshtein(),
     new Jaro(),
     new JaroWinkler(),
-    new Jaccard()
+    new Jaccard(),
+    new Hamming(),
+    new Dice(),
+    new DamerauLevenshtein()
   ]) {
     this.metrics = metrics
   }

@@ -84,5 +84,16 @@ describe('Metric comparator', function() {
             // Assert
             expect(levenshteinResult[0].metric.similarityValue).to.be.closeTo(0.5, 1e-6)
         })
+        it('should return ~ 0.5 with OSA metric', function() {
+            // Arrange
+            const metricComparator = new MetricComparator()
+
+            // Act
+            const result = metricComparator.similarity('hardin', 'martinez')
+            const levenshteinResult: Array<ComparatorSimilarity>  = result.filter(item => item.metric.name === 'OSA') 
+
+            // Assert
+            expect(levenshteinResult[0].metric.similarityValue).to.be.closeTo(0.5, 1e-6)
+        })
     })
 })

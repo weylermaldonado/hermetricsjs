@@ -7,6 +7,7 @@ import Jaccard from './jaccard'
 import Hamming from '../hermetrics/hamming'
 import Dice from '../hermetrics/dice'
 import DamerauLevenshtein from '../hermetrics/damerau_levenshtein'
+import OSA from './osa'
 
 class MetricComparator {
   constructor (private readonly metrics: Metric[] = [
@@ -16,7 +17,8 @@ class MetricComparator {
     new Jaccard(),
     new Hamming(),
     new Dice(),
-    new DamerauLevenshtein()
+    new DamerauLevenshtein(),
+    new OSA()
   ]) {
     this.metrics = metrics
   }

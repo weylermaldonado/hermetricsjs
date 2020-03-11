@@ -8,9 +8,6 @@
     "type": "git",
     "url": "https://github.com/weylermaldonado/hermetricsjs.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "keywords": [
     "hermetrics",
     "nlp",

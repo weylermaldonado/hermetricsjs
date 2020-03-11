@@ -1,68 +1,87 @@
-import Levenshtein from '../hermetrics/levenshtein'
-import IDamerauLevenshteinCostOptions from '../interfaces/damerau-levenshtein-opts.interface'
+import LevenshteinCostOptions from '../interfaces/levenshtein-opts.interface'
+import Levenshtein from './levenshtein'
 
 class DamerauLevenshtein extends Levenshtein {
   constructor (name: string = 'Damerau-Levenshtein') {
     super(name)
   }
 
-  public distance (source: string, target: string, costs: IDamerauLevenshteinCostOptions = {}): number {
-    const { insertionCost = 1, deletionCost = 1, substitutionCost = 1, transpositionCost = 1 } = costs
+  public distance (source: string, target: string, { deletionCost, insertionCost, substitutionCost, transpositionCost }: LevenshteinCostOptions = {}): number {
     const sourceLength: number = source.length
     const targetLength: number = target.length
-    const UPPER = Math.max(insertionCost, deletionCost, substitutionCost, transpositionCost) * (sourceLength + targetLength)
 
-    let matrix: number[][] = [this.range(targetLength + 2).map(() => UPPER)]
-    matrix = matrix.concat([[UPPER].concat(this.range(targetLength + 1).map((j: number) => j * insertionCost))])
-    matrix = matrix.concat(this.range(1, sourceLength + 1).map((i) => [UPPER, i].concat(new Array<number>(targetLength).fill(0))))
+    const removeCost: number = deletionCost ?? 1
+    const insertCost: number = insertionCost ?? 1
+    const subtractCost: number = substitutionCost ?? 1
+    const transposCost: number = transpositionCost ?? 1
+    const rows: number = sourceLength + 2
+    const cols: number = targetLength + 2
 
-    // const lastRow = new Map()
-    const lastRow = new Map()
+    const UPPER: number = Math.max(removeCost, insertCost, subtractCost, transposCost) * (sourceLength + targetLength)
+
+    const distanceMatrix: number[][] = Array<number>(rows).fill(0).map(() => Array<number>(cols).fill(0))
+
+    for (let i = 0; i < rows; i++) {
+      distanceMatrix[i][0] = UPPER
+    }
+    for (let j = 0; j < cols; j++) {
+      distanceMatrix[0][j] = UPPER
+    }
+    for (let i = 1; i < rows; i++) {
+      distanceMatrix[i][1] = (i - 1) * insertCost
+    }
+    for (let j = 1; j < cols; j++) {
+      distanceMatrix[1][j] = (j - 1) * insertCost
+    }
+
+    let lastMatchCol: number = 0
+    let lastMatchRow: number = 0
+    let sourceSymbol: string = ''
+    let targetSymbol: string = ''
+    let optSubCost: number = 0
+    let deletion: number = 0
+    let insertion: number = 0
+    let substitution: number = 0
+    let transpotition: number = 0
+
+    const lastRow = Object.create(null)
 
     for (let i = 1; i < sourceLength + 1; i++) {
-      const sourceSymbol: string = source[i - 1]
-      let lastMatchCol = 0
+      sourceSymbol = source[i - 1]
+      lastMatchCol = 0
 
       for (let j = 1; j < targetLength + 1; j++) {
-        const targetSymbol = target[j - 1]
-        // lastRow.set(targetSymbol, 0)
-        const lastMatchRow: number = lastRow.get(targetSymbol) ?? 0
-        const optSubstitutionCost = sourceSymbol === targetSymbol ? 0 : substitutionCost
+        targetSymbol = target[j - 1]
+        lastMatchRow = lastRow[targetSymbol] !== undefined ? lastRow[targetSymbol] : 0
+        optSubCost = sourceSymbol === targetSymbol ? 0 : subtractCost
 
-        const del = matrix[i][j + 1] + deletionCost
-        const ins = matrix[i + 1][j] + insertionCost
-        const subs = matrix[i][j] + optSubstitutionCost
+        deletion = distanceMatrix[i][j + 1] + removeCost
+        insertion = distanceMatrix[i + 1][j] + insertCost
+        substitution = distanceMatrix[i][j] + optSubCost
 
-        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-        const transposition = matrix[lastMatchRow][lastMatchCol] + Math.max((i - lastMatchRow - 1), (j - lastMatchCol - 1) * insertionCost) + transpositionCost
-        matrix[i + 1][j + 1] = Math.min(del, ins, subs, transposition)
+        transpotition = distanceMatrix[lastMatchRow][lastMatchCol] +
+                                Math.max((i - lastMatchRow) * removeCost, (j - lastMatchCol) * insertCost) + transposCost
+        distanceMatrix[i + 1][j + 1] = Math.min(deletion, insertion, substitution, transpotition)
 
-        if (optSubstitutionCost === 0) lastMatchCol = j
+        if (optSubCost === 0) {
+          lastMatchCol = j
+        }
       }
-      lastRow.set(sourceSymbol, i)
+      lastRow[sourceSymbol] = i
     }
-    console.log(matrix)
-    return matrix[sourceLength][targetLength]
+
+    return distanceMatrix[rows - 1][cols - 1]
   }
 
-  private range (start: number = 0, stop: number = 0, step: number = 1): number[] {
-    const result: number[] = []
-    if (stop === 0) {
-      stop = start
-      start = 0
-    }
-    if ((step > 0 && start >= stop) || (step < 0 && start <= stop)) return result
-    for (let i = start; step > 0 ? i < stop : i > stop; i += step) result.push(i)
-    return result
+  /**
+     *
+     * @param source
+     * @param target
+     * @param param2
+     */
+  public maxDistance (source: string, target: string, { deletionCost, insertionCost, substitutionCost, cost = 1 }: LevenshteinCostOptions = {}): number {
+    return super.maxDistance(source, target, { deletionCost, insertionCost, substitutionCost, cost })
   }
 }
-const a = new DamerauLevenshtein()
-console.log(a.distance('abcd', 'cbad')) // 2
-console.log(a.distance('abc', 'abc')) // 0
-console.log(a.distance('abc', 'def')) // 3
-console.log(a.distance('abc', '')) // 3
-console.log(a.distance('', 'abc')) // 3
-console.log(a.distance('', '')) // 0
-console.log(a.distance('abc', 'ca')) // 2
 
 export default DamerauLevenshtein

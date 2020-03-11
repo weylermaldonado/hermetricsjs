@@ -41,12 +41,12 @@ class Levenshtein extends Metric {
     return distanceMatrix[targetLength][sourceLength]
   }
 
-  public maxDistance (source: string, target: string, { deletionCost, insertionCost, substitutionCost }: LevenshteinCostOptions = {}): number {
+  public maxDistance (source: string, target: string, { deletionCost, insertionCost, substitutionCost, cost = 1 }: LevenshteinCostOptions = {}): number {
     const sourceLength: number = source.length
     const targetLength: number = target.length
-    const delCost: number = deletionCost ?? 1
-    const insCost: number = insertionCost ?? 1
-    const subCost: number = substitutionCost ?? 1
+    const delCost: number = deletionCost ?? cost
+    const insCost: number = insertionCost ?? cost
+    const subCost: number = substitutionCost ?? cost
 
     const maxDel: number = Math.max(sourceLength - targetLength, 0)
     const maxIns: number = Math.max(targetLength - sourceLength, 0)

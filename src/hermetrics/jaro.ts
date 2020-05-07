@@ -20,7 +20,7 @@ class Jaro extends Metric {
       return 1
     }
 
-    const matchDistance: number = Math.max(sourceLength, targetLength) / 2 - 1
+    const matchDistance: number = Math.floor(Math.max(sourceLength, targetLength) / 2) - 1
     const sourceMatches: boolean[] = new Array(sourceLength)
     const targetMatches: boolean[] = new Array(targetLength)
 

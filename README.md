@@ -3,7 +3,7 @@
 
 Javascript library for distance and similarity metrics. Javascript translation from [hermetrics.py](https://github.com/kampamocha/hermetrics).
 
-![Build Status](https://travis-ci.com/weylermaldonado/hermetricsjs.svg?branch=master)
+![Build Status](https://travis-ci.org/weylermaldonado/hermetricsjs.svg?branch=master)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/03f72b3394744c8bb5a874d4b1156350)](https://app.codacy.com/manual/weylermaldonado/hermetricsjs?utm_source=github.com&utm_medium=referral&utm_content=weylermaldonado/hermetricsjs&utm_campaign=Badge_Grade_Dashboard)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)

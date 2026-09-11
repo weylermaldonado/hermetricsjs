@@ -20,6 +20,13 @@ describe('Damerau - Levenshtein Distance', function()
             const distance = dam.distance('abc', 'ca');
             expect(distance).equal(2);
         });
+        // a match after unrestricted transposition
+        it('should return 3 for abc - caa', function()
+        {   
+            const dam = new DamerauLevenshtein();
+            const distance = dam.distance('abc', 'caa');
+            expect(distance).equal(3);
+        });
         // 2 substitutions
         it('should return 2 for abcd - cbad', function()
         {   
@@ -53,6 +60,15 @@ describe('Damerau - Levenshtein Distance', function()
             const expApp = Math.abs(similarity - 0.3333) < ERROR;
             expect(expApp).equal(true);
         });
+
+        // a match after unrestricted transposition
+        it('should return 0 for abc - caa', function()
+        {   
+            const dam = new DamerauLevenshtein();
+            const similarity = dam.similarity('abc', 'caa');
+            const expApp = Math.abs(similarity - 0) < ERROR;
+            expect(expApp).equal(true);
+        });
         
         it('should return 0.5 for abcd - cbad', function()
         {   
@@ -78,6 +94,15 @@ describe('Damerau - Levenshtein Distance', function()
             const dam = new DamerauLevenshtein();
             const normalizedDistance = dam.normalizedDistance('abc', 'ca');
             const expApp = Math.abs(normalizedDistance - 0.6667) < ERROR;
+            expect(expApp).equal(true);
+        });
+        
+        // a match after unrestricted transposition
+        it('should return 1 for abc - caa', function()
+        {   
+            const dam = new DamerauLevenshtein();
+            const normalizedDistance = dam.normalizedDistance('abc', 'caa');
+            const expApp = Math.abs(normalizedDistance - 1) < ERROR;
             expect(expApp).equal(true);
         });
         
